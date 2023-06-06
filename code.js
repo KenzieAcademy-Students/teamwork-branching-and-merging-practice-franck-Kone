@@ -45,11 +45,13 @@ function moveLeft() {
     }
   }
 }
+
 function moveRight() { }
 function moveUp() { }
 function moveDown() { }
 
 // This function gets called after each move, it should add a random tile into an empty space
+
 function addRandomTile() {
   let emptyCoordinates = [];
 
@@ -77,7 +79,21 @@ function resetBoard() { }
 
 // This function will render the game board to the DOM.
 // It will completely delete the old DOM and create a new board after each move.  
-function renderBoard() { }
+
+function renderBoard() {
+  let board = document.getElementById("board");
+
+  let html = `<div class="grid">`
+  for (let row of dataModel.board) {
+    for (let cell of row) {
+      html += `<div class="cell number-${cell}">${(cell) ? cell : ""}</div>`
+    }
+  }
+  html += `</div>`
+
+  board.innerHTML = html;
+}
+
 
 // When any of the move functions are done, they should call this.  
 function afterMove() {
@@ -95,3 +111,5 @@ function startGame() {
   renderBoard();
 }
 startGame();
+
+// Shouldn't be any issues unless we try to merge this line!
